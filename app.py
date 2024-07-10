@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 
 # Database connection parameters
-DATABASE_URL = os.getenv('DATABASE_URL', 'postgres://default:HNmMDLBtW37u@ep-yellow-flower-a45dym8j.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require')
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 def get_db_connection():
     conn = psycopg2.connect(DATABASE_URL, cursor_factory=RealDictCursor)
