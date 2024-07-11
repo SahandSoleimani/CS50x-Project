@@ -15,11 +15,26 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let questionNumb = 1;
     let userScore = 0;
 
+    console.log("Elements:");
+    console.log("startBtn:", startBtn);
+    console.log("popupInfo:", popupInfo);
+    console.log("exitBtn:", exitBtn);
+    console.log("main:", main);
+    console.log("continueBtn:", continueBtn);
+    console.log("quizSection:", quizSection);
+    console.log("quizBox:", quizBox);
+    console.log("resultBox:", resultBox);
+    console.log("goHomeBtn:", goHomeBtn);
+    console.log("nextBtn:", nextBtn);
+    console.log("optionList:", optionList);
+
     if (startBtn) {
         startBtn.onclick = () => {
             popupInfo.classList.add('active');
             main.classList.add('active');
         };
+    } else {
+        console.error('startBtn not found');
     }
 
     if (exitBtn) {
@@ -27,6 +42,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             popupInfo.classList.remove('active');
             main.classList.remove('active');
         };
+    } else {
+        console.error('exitBtn not found');
     }
 
     if (continueBtn) {
@@ -40,6 +57,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             questionCounter(1);
             headerScore();
         };
+    } else {
+        console.error('continueBtn not found');
     }
 
     if (goHomeBtn) {
@@ -54,6 +73,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             showQuestions(questionCount);
             questionCounter(questionNumb);
         };
+    } else {
+        console.error('goHomeBtn not found');
     }
 
     if (nextBtn) {
@@ -70,10 +91,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 showResultBox();
             }
         };
+    } else {
+        console.error('nextBtn not found');
     }
 
     function showQuestions(index) {
         const questionText = document.querySelector('.question-text');
+        if (!questionText) {
+            console.error('questionText not found');
+            return;
+        }
         questionText.textContent = `${questions[index].numb}. ${questions[index].question}`;
 
         let optionTag = `<div class="option"><span>${questions[index].options[0]}</span></div>
@@ -116,11 +143,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     function questionCounter(index) {
         const questionTotal = document.querySelector('.question-total');
+        if (!questionTotal) {
+            console.error('questionTotal not found');
+            return;
+        }
         questionTotal.textContent = `${index} of ${questions.length} Questions`;
     }
 
     function headerScore() {
         const headerScoreText = document.querySelector('.header-score');
+        if (!headerScoreText) {
+            console.error('headerScoreText not found');
+            return;
+        }
         headerScoreText.textContent = `Score: ${userScore} / ${questions.length}`;
     }
 
@@ -129,10 +164,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
         resultBox.classList.add('active');
 
         const scoreText = document.querySelector('.score-text');
+        if (!scoreText) {
+            console.error('scoreText not found');
+            return;
+        }
         scoreText.textContent = `Your Score: ${userScore} out of ${questions.length}`;
 
         const circularProgress = document.querySelector('.circular-progress');
         const progressValue = document.querySelector('.progress-value');
+        if (!circularProgress || !progressValue) {
+            console.error('circularProgress or progressValue not found');
+            return;
+        }
         let progressStartValue = -1;
         let progressEndValue = (userScore / questions.length) * 100;
         let speed = 20;
