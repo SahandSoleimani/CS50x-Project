@@ -14,6 +14,18 @@ def get_db_connection():
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    if request.method == 'POST':
+        score = request.form['score']
+
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('INSERT INTO scores (score) VALUES (%s)', (score))
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        return render_template("result.html", score=score)
+    
     return render_template("index.html")
 
 if __name__ == '__main__':
