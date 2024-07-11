@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.querySelector('.start-btn');
     const popupInfo = document.querySelector('.popup-info');
     const exitBtn = document.querySelector('.exit-btn');
@@ -11,30 +11,25 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const nextBtn = document.querySelector('.next-btn');
     const optionList = document.querySelector('.option-list');
 
-    let questionCount = 0;
-    let questionNumb = 1;
-    let userScore = 0;
+    // Check if each element exists
+    if (!startBtn) console.error('startBtn not found');
+    if (!popupInfo) console.error('popupInfo not found');
+    if (!exitBtn) console.error('exitBtn not found');
+    if (!main) console.error('main not found');
+    if (!continueBtn) console.error('continueBtn not found');
+    if (!quizSection) console.error('quizSection not found');
+    if (!quizBox) console.error('quizBox not found');
+    if (!resultBox) console.error('resultBox not found');
+    if (!goHomeBtn) console.error('goHomeBtn not found');
+    if (!nextBtn) console.error('nextBtn not found');
+    if (!optionList) console.error('optionList not found');
 
-    console.log("Elements:");
-    console.log("startBtn:", startBtn);
-    console.log("popupInfo:", popupInfo);
-    console.log("exitBtn:", exitBtn);
-    console.log("main:", main);
-    console.log("continueBtn:", continueBtn);
-    console.log("quizSection:", quizSection);
-    console.log("quizBox:", quizBox);
-    console.log("resultBox:", resultBox);
-    console.log("goHomeBtn:", goHomeBtn);
-    console.log("nextBtn:", nextBtn);
-    console.log("optionList:", optionList);
-
+    // Add event listeners only if elements exist
     if (startBtn) {
         startBtn.onclick = () => {
             popupInfo.classList.add('active');
             main.classList.add('active');
         };
-    } else {
-        console.error('startBtn not found');
     }
 
     if (exitBtn) {
@@ -42,8 +37,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             popupInfo.classList.remove('active');
             main.classList.remove('active');
         };
-    } else {
-        console.error('exitBtn not found');
     }
 
     if (continueBtn) {
@@ -57,8 +50,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             questionCounter(1);
             headerScore();
         };
-    } else {
-        console.error('continueBtn not found');
     }
 
     if (goHomeBtn) {
@@ -73,8 +64,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             showQuestions(questionCount);
             questionCounter(questionNumb);
         };
-    } else {
-        console.error('goHomeBtn not found');
     }
 
     if (nextBtn) {
@@ -91,8 +80,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 showResultBox();
             }
         };
-    } else {
-        console.error('nextBtn not found');
     }
 
     function showQuestions(index) {
