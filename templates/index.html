@@ -1,25 +1,88 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Birthday List</title>
-</head>
-<body>
-    <h1>Add a Birthday</h1>
-    <form method="POST">
-        <input type="text" id="name" name="name" placeholder="Name" required><br>
-        <input type="number" id="month_of_birth" name="month_of_birth" placeholder="Month of Birth" required><br>
-        <input type="number" id="day_of_birth" name="day_of_birth" placeholder="Day of Birth" required><br>
-        <button type="submit">Add Birthday</button>
-    </form>
 
-    <h2>Birthdays</h2>
-    <ul>
-        {% for birthday in birthdays %}
-            <li>{{ birthday.name }}: {{ birthday.month_of_birth }}/{{ birthday.day_of_birth }}</li>
-        {% endfor %}
-    </ul>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>English Test</title>
+    <link rel="stylesheet" href="../static/styles/style.css">
+</head>
+
+<body>
+
+    <main class="main">
+        <header class="header">
+            <a href="" class="logo">§</a>
+
+            <nav class="navbar">
+                <a href="https://github.com/SahandSoleimani/project.cs50x">CS50x Final Project</a>
+            </nav>
+        </header>
+
+        <div class="container">
+            <section class="quiz-section">
+                <div class="quiz-box">
+                    <h1>English Test</h1>
+                    <div class="quiz-header">
+                        <span>Questions</span>
+                        <span class="header-score">Score: 0 / 5</span>
+                    </div>
+
+                    <h2 class="question-text"></h2>
+
+                    <div class="option-list">
+                    </div>
+
+                    <div class="quiz-footer">
+                        <span class="question-total">1 of 5 Questions</span>
+                        <button class="next-btn">Next</button>
+                    </div>
+                </div>
+
+                <div class="result-box">
+                    <h2>Your Test Result!</h2>
+                    <div class="percentage-container">
+                        <div class="circular-progress">
+                            <span class="progress-value">0%</span>
+                        </div>
+
+                        <span class="score-text">Your Score: 0 out of 5</span>
+                    </div>
+
+                    <div class="buttons">
+                        <button class="tryAgain-btn">Try Again</button>
+                        <button class="goHome-btn">Go Back</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="home">
+                <div class="home-content">
+                    <h1>English Test</h1>
+                    <p>This test is designed to gauge your level of proficiency in English!</p>
+                    <button class="start-btn">Start Test</button>
+                </div>
+            </section>
+        </div>
+        </main>
+
+    <div class="popup-info">
+        <h2>Test Guide</h2>
+        <span class="info">You cannot change your answers</span><br>
+        <span class="info">You cannot go back to the previous questions</span><br>
+        <span class="info">There is no time limit for any of the questions.</span><br>
+        <span class="info">Good luck, have fun! :D</span><br>
+
+        <div class="btn-group">
+            <button class="info-btn exit-btn">Exit Test</button>
+            <a href="#" class="info-btn continue-btn">Continue</a>
+        </div>
+    </div>
+
+
+    <script src="../static/scripts/questions.js"></script>
+    <script src="../static/scripts/script.js"></script>
 </body>
+
 </html>

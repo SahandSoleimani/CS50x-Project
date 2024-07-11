@@ -14,29 +14,7 @@ def get_db_connection():
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST':
-        name = request.form['name']
-        month_of_birth = request.form['month_of_birth']
-        day_of_birth = request.form['day_of_birth']
-
-        conn = get_db_connection()
-        cursor = conn.cursor()
-        cursor.execute('INSERT INTO birthdays (name, month_of_birth, day_of_birth) VALUES (%s, %s, %s)',
-                       (name, month_of_birth, day_of_birth))
-        conn.commit()
-        cursor.close()
-        conn.close()
-
-        return redirect(url_for('index'))
-
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM birthdays')
-    birthdays = cursor.fetchall()
-    cursor.close()
-    conn.close()
-
-    return render_template('index.html', birthdays=birthdays)
+    render_template("index.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
